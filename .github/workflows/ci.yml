@@ -45,9 +45,15 @@ jobs:
       - name: Lint
         run: yarn ${{ matrix.command }}
 
-    echo:
-      uses: arvidpm/github-actions-workshop/actions/workflows/_echo_hello.yml@reusable-actions
-      with:
-        message: "message"
-      
-    # stepsi:
+      - uses: ./tools/custom-actions/e2e/
+        id: hello
+        with:
+          who-to-greet: 'Mona the Octocat'
+
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+    # echo:
+    #   uses: arvidpm/github-actions-workshop/actions/workflows/_echo_hello.yml@reusable-actions
+    #   with:
+    #     message: "message"
