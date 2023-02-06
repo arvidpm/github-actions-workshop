@@ -46,4 +46,6 @@ jobs:
         run: yarn ${{ matrix.command }}
 
       - name: echo
-        uses: arvidpm/github-actions-workshop/actions/workflows/_echo_hello.yml@reusable-actions
+          uses: arvidpm/github-actions-workshop/actions/workflows/_echo_hello.yml@reusable-actions
+          with:
+            message: "message"
