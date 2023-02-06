@@ -34,6 +34,7 @@ jobs:
           key: our-cache-yarn-${{ hashFiles('**/yarn.lock.json') }}
 
       - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Lint
